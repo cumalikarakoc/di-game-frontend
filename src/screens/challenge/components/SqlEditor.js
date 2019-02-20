@@ -4,9 +4,9 @@ const SqlEditor = ({className}) => {
 
     return (
         <div className={className}>
-            <div className="rounded overflow-hidden border-2">
+            <div className="rounded overflow-hidden border-2 h-full">
             </div>
-            < button
+            <button
                 className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
                 Button
             </button>

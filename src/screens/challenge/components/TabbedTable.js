@@ -1,30 +1,67 @@
-import React from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-const TabbedTable = (props) => {
+class TabbedTable extends Component {
+  state = {
+    tables: [],
+    selectedTableName: ''
+  }
+
+  componentWillReceiveProps (nextProps, nextContext) {
+    const {tables} = nextProps
+    console.log(tables)
+    this.setState({
+      tables,
+      selectedTableName: tables.length === 0 ? '' : tables[0].name
+    })
+  }
+
+  handleSelectedTableChange (selectedTablename) {
+    this.setState({
+      selectedTableName: selectedTablename
+    })
+  }
+
+  render () {
+    const {tables, selectedTableName} = this.state
+    const selectedTable = tables.find(table => table.name === selectedTableName) || {name: '', columns: [], rows: []}
 
     return (
-        <div className="rounded overflow-hidden border-2">
-            <div className="px-6">
-                <ul className="list-reset flex ">
-                    <li className="-mb-px mr-1">
-                        <a className="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-dark font-semibold"
-                           href="#">Users</a>
-                    </li>
-                    <li className="mr-1">
-                        <a className="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold"
-                           href="#">Guests</a>
-                    </li>
-                    <li className="mr-1">
-                        <a className="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold"
-                           href="#">Courses</a>
-                    </li>
-                </ul>
-            </div>
-            <p className="text-grey-darker text-base mt-4 mb-2 px-5">
-                Table elements
-            </p>
+      <div className="rounded border-2 mt-4">
+        <div className="flex">
+          {tables.map(table => {
+            return (<div
+              onClick={e => this.handleSelectedTableChange(table.name)}
+              className={`p-4 border-r border-b flex-grow ${table.name === selectedTableName ? 'bg-blue' : ''}`}>
+              {table.name}
+            </div>)
+          })}
         </div>
+        <div>
+          <table className='w-full'>
+            <thead>
+            <tr>
+              {selectedTable.columns.map(columnName => <th className='border-1 border-b border-l p-2'>{columnName}</th>)}
+            </tr>
+            </thead>
+            <tbody>
+            {selectedTable.rows.map(row => <tr>
+              {selectedTable.columns.map(columnName => <td className='border-1 border-b border-l p-2'>{row[columnName]}</td>)}
+            </tr>)}
+            </tbody>
+          </table>
+        </div>
+      </div>
     )
-};
+  }
+}
+
+TabbedTable.propTypes = {
+  tables: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    columns: PropTypes.arrayOf(PropTypes.string),
+    rows: PropTypes.arrayOf(PropTypes.object)
+  })),
+}
 
 export default TabbedTable
