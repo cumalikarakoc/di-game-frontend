@@ -3,22 +3,14 @@ import React from 'react'
 const Assignment = (props) => {
 
     return (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-                    <p className="text-grey-darker text-base">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
-                        perferendis eaque, exercitationem praesentium nihil.
-                    </p>
-                </div>
-                <div className="px-6 py-4">
-                    <span
-                        className="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#photography</span>
-                    <span
-                        className="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#travel</span>
-                    <span
-                        className="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">#winter</span>
-                </div>
+        <div className="max-w-sm rounded overflow-hidden border-2">
+            <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-4">Assignment</div>
+                <hr className="h-px bg-black"/>
+                <p className="text-grey-darker text-base mt-4 mb-2">
+                    {props.assignment}
+                </p>
+            </div>
         </div>
     )
 };
