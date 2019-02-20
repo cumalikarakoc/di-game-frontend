@@ -3,7 +3,7 @@ import React from 'react'
 const Assignment = (props) => {
 
     return (
-        <div className="max-w-sm rounded overflow-hidden border-2">
+        <div className="rounded overflow-hidden border-2">
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-4">Assignment</div>
                 <hr className="h-px bg-black"/>
