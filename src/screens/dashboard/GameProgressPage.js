@@ -39,6 +39,11 @@ class GameProgressPage extends Component {
         avatarUrl: 'https://images.unsplash.com/photo-1549383064-d560ca308a9c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=400&fit=crop&ixid=eyJhcHBfaWQiOjF9',
         level: 23,
         id: 7
+      },
+      {
+        avatarUrl: 'https://images.unsplash.com/photo-1549383064-d560ca308a9c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&h=400&fit=crop&ixid=eyJhcHBfaWQiOjF9',
+        level: 44,
+        id: 8
       }
     ]
   }
@@ -54,33 +59,36 @@ class GameProgressPage extends Component {
     })
   }
 
-  render () {
-    const outerCircleWidth = 600;
-    const outerCircleHeight = 600;
-
-    const profileWidth = 100;
-    const profileHeight = 100;
+  buildPlayerProfiles (players, outerCircleWidth, outerCircleHeight) {
+    const profileWidth = 100
+    const profileHeight = 100
 
     const radius = 200
-    const {players} = this.state
 
-    let angle = 0;
+    let angle = 0
     let step = (2 * Math.PI) / players.length
 
-    const playersWithComponents = players.map(player => {
-      const x = Math.round(outerCircleWidth / 2 + radius * Math.cos(angle) -profileWidth / 2)
+    return players.map(player => {
+      const x = Math.round(outerCircleWidth / 2 + radius * Math.cos(angle) - profileWidth / 2)
       const y = Math.round(outerCircleHeight / 2 + radius * Math.sin(angle) - profileHeight / 2)
 
       angle += step
 
-      return <PlayerProfile size={{width: profileWidth ,height: profileHeight}} key={player.id} avatarUrl={player.avatarUrl} level={player.level} position={{x: x, y: y}}/>;
+      return <PlayerProfile size={{width: profileWidth, height: profileHeight}} key={player.id}
+                            avatarUrl={player.avatarUrl} level={player.level} position={{x: x, y: y}}/>
     })
+  }
 
+  render () {
+    const outerCircleWidth = 600
+    const outerCircleHeight = 600
+    const {players} = this.state
+    const playersAsComponents = this.buildPlayerProfiles(players, outerCircleWidth, outerCircleHeight)
 
     return <div>
       <h1>Players</h1>
       <div style={{width: `${outerCircleWidth}px`, height: `${outerCircleHeight}px`}}>
-        {playersWithComponents}
+        {playersAsComponents}
       </div>
     </div>
   }
