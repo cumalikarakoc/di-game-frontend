@@ -8,6 +8,7 @@ const SqlEditor = ({className}) => {
     return (
         <div className={className}>
             <AceEditor
+                width="100%"
                 mode="sqlserver"
                 theme="textmate"
                 name="UNIQUE_ID_OF_DIV"
