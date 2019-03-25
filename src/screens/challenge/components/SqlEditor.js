@@ -16,10 +16,6 @@ const SqlEditor = ({className, value = "", onChange}) => {
                 editorProps={{$blockScrolling: true}}
                 onChange={onChange}
             />
-            <button
-                className="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
-                Submit
-            </button>
         </div>
     )
 };

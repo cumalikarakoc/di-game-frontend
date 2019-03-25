@@ -10,7 +10,10 @@ class App extends Component {
     render() {
         return (
             <Router>
-                <div>
+                <div style={{backgroundColor: '#f7f7f7'}} className='flex flex-col flex-grow items-stretch h-screen'>
+                    <div className="py-6 border-b border-grey-lighter pl-6 bg-white"><span
+                      className="text-2xl font-bold">DI Game</span></div>
+
                     <Switch>
                         <Route exact path="/" component={LoginPage}/>
                         <Route exact path="/before-game" component={BeforeGameStartPage}/>

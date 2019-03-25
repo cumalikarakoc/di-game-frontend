@@ -7,7 +7,6 @@ const Assignment = ({description}) => {
                 <div className="font-bold text-xl mb-4">Assignment</div>
                 <hr className="h-px bg-black"/>
                 <p className="text-grey-darker text-base mt-4 mb-2">
-                    {description}
                 </p>
             </div>
         </div>
