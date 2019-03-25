@@ -13,7 +13,6 @@ class LoginPage extends Component {
 
   handleLogin = () => {
     const {playerId} = this.state
-
     RequestHelper.post('/auth/login', {
       playerId
     }).then(({success, players, validation}) => {
@@ -22,6 +21,7 @@ class LoginPage extends Component {
       })
 
       if(success){
+        localStorage.setItem('playerId', playerId)
         this.props.history.push('/before-game', { players })
       }
     })

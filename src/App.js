@@ -4,6 +4,7 @@ import LoginPage from './screens/auth/LoginPage'
 import ChallengePage from './screens/challenge/ChallengePage'
 import GameProgressPage from './screens/dashboard/GameProgressPage'
 import BeforeGameStartPage from './screens/lobby/BeforeGameStartPage'
+import QueryCardsPage from './screens/dashboard/QueryCardsPage'
 
 class App extends Component {
     render() {
@@ -15,6 +16,7 @@ class App extends Component {
                         <Route exact path="/before-game" component={BeforeGameStartPage}/>
                         <Route exact path="/dashboard" component={GameProgressPage}/>
                         <Route exact path="/challenge" component={ChallengePage}/>
+                        <Route exact path="/cards" component={QueryCardsPage}/>
                     </Switch>
                 </div>
             </Router>
