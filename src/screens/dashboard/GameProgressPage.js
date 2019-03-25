@@ -116,7 +116,7 @@ class GameProgressPage extends Component {
   }
 
   componentDidMount () {
-    const socket = websocket('http://127.0.0.1:3001')
+    const socket = websocket('https://di-game-api.maartendev.me')
     socket.on('player joined', player => {
       const {players} = this.state
 

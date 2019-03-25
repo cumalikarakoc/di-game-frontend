@@ -17,7 +17,7 @@ class RequestHelper {
 
   static request (method, url, data) {
     const urlPartialWithSlashPrefix = url.startsWith('/') ? url : `/${url}`
-    const absoluteUrl = url.includes('http') ? urlPartialWithSlashPrefix : `http://localhost:3001` + urlPartialWithSlashPrefix;
+    const absoluteUrl = url.includes('http') ? urlPartialWithSlashPrefix : `https://di-game-api.maartendev.me` + urlPartialWithSlashPrefix;
 
     return new Promise((resolve, reject) => {
       return fetch(absoluteUrl, {

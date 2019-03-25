@@ -16,10 +16,9 @@ class ChallengePage extends Component {
   }
 
   componentDidMount () {
-    this.socket = websocket('http://127.0.0.1:3001')
+    this.socket = websocket('https://di-game-api.maartendev.me')
 
     this.socket.on('next challenge', challenge => {
-      console.log(challenge)
       this.setState({
         challenge: {
           description: challenge.description,
