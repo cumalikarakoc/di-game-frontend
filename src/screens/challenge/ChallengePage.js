@@ -18,30 +18,58 @@ class ChallengePage extends Component {
   componentDidMount () {
     this.socket = websocket('http://127.0.0.1:3001')
 
-    // RequestHelper.get('/challenges/next').then(challenge => {
-    //   this.setState({challenge})
-    // })
+    this.socket.on('next challenge', challenge => {
+      console.log(challenge)
+      this.setState({
+        challenge: {
+          description: challenge.description,
+          tables: challenge.schema.tables
+        }
+      })
+    })
   }
 
   handleChange = (nextValue) => {
-    console.log(this.socket)
-
     this.socket.emit('query update', {playerId: localStorage.getItem('playerId'), query: nextValue})
   }
 
   render () {
     const {challenge} = this.state
 
-    return (<div>
+    return (<div className='px-6 flex-grow'>
       <div className="flex justify-end">
-        <ChallengerProgress/>
+        {/*<ChallengerProgress/>*/}
       </div>
 
+
       <div className="flex mt-12 items-stretch">
-        <SqlEditor className="flex-1 h-64" onChange={this.handleChange}/>
-        <div className="flex-1 ml-16">
-          <Assignment description={challenge.description}/>
-          <TabbedTable tables={challenge.tables}/>
+        <div className="flex-1 bg-white shadow">
+          <div className="p-4 border-b border-grey-lighter font-bold text-grey-darker">
+            <span>Query Editor</span>
+          </div>
+          <div className="p-4">
+            <SqlEditor className="min-h-64" onChange={this.handleChange}/>
+          </div>
+        </div>
+
+        <div className='flex-1'>
+          <div className="flex-1 bg-white ml-16 shadow">
+            <div className="p-4 border-b border-grey-lighter font-bold text-grey-darker">
+              <span>Challenge</span>
+            </div>
+            <div className="p-4">
+              <p>{challenge.description}</p>
+            </div>
+          </div>
+
+          <div className="flex-1 bg-white ml-16 mt-6 shadow">
+            <div className="p-4 border-b border-grey-lighter font-bold text-grey-darker">
+              <span>Example Population</span>
+            </div>
+            <div className="p-4">
+              <TabbedTable tables={challenge.tables}/>
+            </div>
+          </div>
         </div>
       </div>
     </div>)

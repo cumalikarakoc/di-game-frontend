@@ -27,12 +27,12 @@ class TabbedTable extends Component {
     const selectedTable = tables.find(table => table.name === selectedTableName) || {name: '', columns: [], rows: []}
 
     return (
-      <div className="rounded border-2 mt-4">
+      <div className="rounded">
         <div className="flex">
           {tables.map(table => {
             return (<div
               onClick={e => this.handleSelectedTableChange(table.name)}
-              className={`p-4 border-r border-b flex-grow ${table.name === selectedTableName ? 'bg-blue' : ''}`}>
+              className={`p-4 border-r border-b flex-grow ${table.name === selectedTableName ? 'bg-grey-darker' : ''}`}>
               {table.name}
             </div>)
           })}
