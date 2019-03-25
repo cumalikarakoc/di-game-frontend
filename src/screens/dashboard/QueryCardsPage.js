@@ -1,35 +1,52 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import websocket from 'socket.io-client'
-import SqlEditor from '../challenge/components/SqlEditor'
+import AceEditor from 'react-ace'
 
 class QueryCardsPage extends Component {
-  state = {
-    players: []
-  }
+    state = {
+        players: []
+    }
 
   componentDidMount () {
     const socket = websocket('https://di-game-api.maartendev.me')
+
     socket.on('progress update', players => {
-console.log(players)
       this.setState({
         players: players
       })
     })
   }
 
-  render () {
-    const {players} = this.state
+    render() {
+        const {players} = this.state
 
-    return <div>
-      <h1>Players</h1>
+        return <div>
+            <h1>Players</h1>
 
-      <div>
-        {players.map(player => {
-          return <SqlEditor className="flex-1 h-64" onChange={this.handleChange} value={player.query}/>
-        })}
-      </div>
-    </div>
-  }
+            <div className="whitespace-no-wrap mt-10">
+                {players.map(player => {
+                    return <div key={player.playerId} className=" w-1/3 bg-grey-dark inline-block mr-2">
+                        <div className="">
+                            <div className="w-full bg-grey-dark h-16 relative">
+                                <div className="absolute" style=
+                                    {{backgroundImage: `url(${player.avatarUrl})`,
+                                        top: "-77%", left:"40%", width:"100px", height: "100px", borderRadius: "50px"}}
+                                />
+                            </div>
+                            <AceEditor
+                                width="100%"
+                                mode="sqlserver"
+                                theme="textmate"
+                                name={"ace" + player.playerId}
+                                value={player.query}
+                                editorProps={{$blockScrolling: true}}
+                            />
+                        </div>
+                    </div>
+                })}
+            </div>
+        </div>
+    }
 }
 
 export default QueryCardsPage
