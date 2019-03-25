@@ -23,11 +23,11 @@ class QueryCardsPage extends Component {
         return <div>
             <h1>Players</h1>
 
-            <div className="whitespace-no-wrap mt-10">
+            <div className="whitespace-no-wrap mt-10 overflow-x-scroll">
                 {players.map(player => {
-                    return <div key={player.playerId} className=" w-1/3 bg-grey-dark inline-block mr-2">
-                        <div className="">
-                            <div className="w-full bg-grey-dark h-16 relative">
+                    return <div key={player.playerId} className="w-1/3 inline-block mr-4">
+                        <div style={{marginTop: "80px"}} className="shadow-lg">
+                            <div className="w-full bg-white rounded h-16 relative">
                                 <div className="absolute" style=
                                     {{backgroundImage: `url(${player.avatarUrl})`,
                                         top: "-77%", left:"40%", width:"100px", height: "100px", borderRadius: "50px"}}
@@ -39,6 +39,7 @@ class QueryCardsPage extends Component {
                                 theme="textmate"
                                 name={"ace" + player.playerId}
                                 value={player.query}
+                                fontSize='18px'
                                 editorProps={{$blockScrolling: true}}
                             />
                         </div>

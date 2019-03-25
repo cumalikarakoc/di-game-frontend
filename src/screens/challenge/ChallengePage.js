@@ -35,13 +35,8 @@ class ChallengePage extends Component {
   render () {
     const {challenge} = this.state
 
-    return (<div className='px-6 flex-grow'>
-      <div className="flex justify-end">
-        {/*<ChallengerProgress/>*/}
-      </div>
-
-
-      <div className="flex mt-12 items-stretch">
+    return (<div className='flex-grow'>
+      <div className="flex items-stretch">
         <div className="flex-1 bg-white shadow">
           <div className="p-4 border-b border-grey-lighter font-bold text-grey-darker">
             <span>Query Editor</span>
