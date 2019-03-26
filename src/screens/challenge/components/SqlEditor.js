@@ -3,16 +3,15 @@ import AceEditor from "react-ace";
 import "brace/mode/sqlserver";
 import "brace/theme/textmate";
 
-const SqlEditor = ({ className, value = "", onChange }) => {
+const SqlEditor = ({ className, id, value = "", onChange }) => {
   return (
     <div className={className}>
       <AceEditor
         width="100%"
         mode="sqlserver"
         theme="textmate"
-        name="UNIQUE_ID_OF_DIV"
+        name={id}
         value={value}
-        editorProps={{ $blockScrolling: true }}
         onChange={onChange}
       />
     </div>

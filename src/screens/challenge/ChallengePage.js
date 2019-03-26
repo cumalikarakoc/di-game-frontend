@@ -44,7 +44,11 @@ class ChallengePage extends Component {
               <span>Query Editor</span>
             </div>
             <div className="p-4">
-              <SqlEditor className="min-h-64" onChange={this.handleChange} />
+              <SqlEditor
+                className="min-h-64"
+                id="EDITOR_1"
+                onChange={this.handleChange}
+              />
             </div>
           </div>
 

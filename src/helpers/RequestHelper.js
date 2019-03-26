@@ -1,3 +1,5 @@
+import { API_URL } from "../config";
+
 class RequestHelper {
   static post(uri, data) {
     return this.request("POST", uri, data);
@@ -19,7 +21,7 @@ class RequestHelper {
     const urlPartialWithSlashPrefix = url.startsWith("/") ? url : `/${url}`;
     const absoluteUrl = url.includes("http")
       ? urlPartialWithSlashPrefix
-      : `https://di-game-api.maartendev.me` + urlPartialWithSlashPrefix;
+      : API_URL + urlPartialWithSlashPrefix;
 
     const token = localStorage.getItem("token");
 
