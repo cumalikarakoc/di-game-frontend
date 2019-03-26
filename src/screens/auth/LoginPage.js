@@ -13,15 +13,16 @@ class LoginPage extends Component {
 
   handleLogin = () => {
     const { playerId } = this.state;
+
     RequestHelper.post("/auth/login", {
       playerId
-    }).then(({ success, players, validation }) => {
+    }).then(({ success, players, token, validation }) => {
       this.setState({
         validation
       });
 
       if (success) {
-        localStorage.setItem("playerId", playerId);
+        localStorage.setItem("token", token);
         this.props.history.push("/before-game", { players });
       }
     });

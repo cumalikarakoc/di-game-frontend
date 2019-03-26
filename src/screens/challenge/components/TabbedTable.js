@@ -9,16 +9,16 @@ class TabbedTable extends Component {
 
   componentWillReceiveProps(nextProps, nextContext) {
     const { tables } = nextProps;
-    console.log(tables);
+
     this.setState({
       tables,
       selectedTableName: tables.length === 0 ? "" : tables[0].name
     });
   }
 
-  handleSelectedTableChange(selectedTablename) {
+  handleSelectedTableChange(selectedTableName) {
     this.setState({
-      selectedTableName: selectedTablename
+      selectedTableName: selectedTableName
     });
   }
 

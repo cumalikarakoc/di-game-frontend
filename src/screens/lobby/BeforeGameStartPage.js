@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import websocket from "socket.io-client";
+import { SOCKET_URL } from "../../config";
 
 class BeforeGameStartPage extends Component {
   state = {
@@ -14,7 +15,7 @@ class BeforeGameStartPage extends Component {
       players: state.players
     });
 
-    const socket = websocket("https://di-game-api.maartendev.me");
+    const socket = websocket(SOCKET_URL);
     socket.on("player joined", player => {
       const { players } = this.state;
 

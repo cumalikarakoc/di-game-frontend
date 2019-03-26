@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import LoginPage from "./screens/auth/LoginPage";
 import ChallengePage from "./screens/challenge/ChallengePage";
-import GameProgressPage from "./screens/dashboard/GameProgressPage";
 import BeforeGameStartPage from "./screens/lobby/BeforeGameStartPage";
-import QueryCardsPage from "./screens/dashboard/QueryCardsPage";
+import ProgressOverviewPage from "./screens/dashboard/ProgressOverviewPage";
 
 class App extends Component {
   render() {
@@ -25,9 +24,13 @@ class App extends Component {
                 path="/before-game"
                 component={BeforeGameStartPage}
               />
-              <Route exact path="/dashboard" component={GameProgressPage} />
+
               <Route exact path="/challenge" component={ChallengePage} />
-              <Route exact path="/cards" component={QueryCardsPage} />
+              <Route
+                exact
+                path="/progress-overview"
+                component={ProgressOverviewPage}
+              />
               <Route path="*" component={LoginPage} />
             </Switch>
           </div>

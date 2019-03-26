@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import Assignment from "./components/Assignment";
 import TabbedTable from "./components/TabbedTable";
 import SqlEditor from "./components/SqlEditor";
-import ChallengerProgress from "./components/ChallengerProgress";
-import RequestHelper from "../../helpers/RequestHelper";
 import websocket from "socket.io-client";
+import { SOCKET_URL } from "./../../config";
 
 class ChallengePage extends Component {
   socket = null;
@@ -16,7 +14,7 @@ class ChallengePage extends Component {
   };
 
   componentDidMount() {
-    this.socket = websocket("https://di-game-api.maartendev.me");
+    this.socket = websocket(SOCKET_URL);
 
     this.socket.on("next challenge", challenge => {
       this.setState({

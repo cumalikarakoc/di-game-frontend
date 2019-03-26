@@ -21,11 +21,14 @@ class RequestHelper {
       ? urlPartialWithSlashPrefix
       : `https://di-game-api.maartendev.me` + urlPartialWithSlashPrefix;
 
+    const token = localStorage.getItem("token");
+
     return new Promise((resolve, reject) => {
       return fetch(absoluteUrl, {
         method: method,
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
         },
         body: data === null ? null : JSON.stringify(data)
       })

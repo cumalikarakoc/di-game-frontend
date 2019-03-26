@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import websocket from "socket.io-client";
 import AceEditor from "react-ace";
+import { SOCKET_URL } from "../../config";
 
-class QueryCardsPage extends Component {
+class ProgressOverviewPage extends Component {
   state = {
     players: []
   };
 
   componentDidMount() {
-    const socket = websocket("https://di-game-api.maartendev.me");
+    const socket = websocket(SOCKET_URL);
 
     socket.on("progress update", players => {
       this.setState({
@@ -61,4 +62,4 @@ class QueryCardsPage extends Component {
   }
 }
 
-export default QueryCardsPage;
+export default ProgressOverviewPage;
